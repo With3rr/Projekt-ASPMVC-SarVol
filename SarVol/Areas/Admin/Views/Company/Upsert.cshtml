@@ -1,0 +1,108 @@
+﻿@model SarVol.Models.Company
+@{
+    ViewData["Title"] = "Add company";
+}
+
+<form method="post" enctype="application/x-www-form-urlencoded" asp-action="Upsert">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row p-3 border">
+        @if (Model.Id != 0)
+        {
+            ViewData["Title"] = "Edit company";
+            <input type="hidden" asp-for="Id" />
+        }
+        <div class="col-12 border-bottom">
+            <h2 class="text-primary">@ViewData["Title"]</h2>
+        </div>
+        <div class="col-8 pt-4">
+            <div class="form-group row">
+                <div class="col-4 p-3">
+                    <label asp-for="@Model.Name"></label>
+                </div>
+                <div class="col-8 p-3">
+                    <input asp-for="@Model.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 p-3">
+                    <label asp-for="@Model.City"></label>
+                </div>
+                <div class="col-8 p-3">
+                    <input asp-for="@Model.City" class="form-control" />
+                    <span asp-validation-for="@Model.City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 p-3">
+                    <label asp-for="@Model.PostalCode"></label>
+                </div>
+                <div class="col-8 p-3">
+                    <input asp-for="@Model.PostalCode" class="form-control" />
+                    <span asp-validation-for="@Model.PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 p-3">
+                    <label asp-for="@Model.Country"></label>
+                </div>
+                <div class="col-8 p-3">
+                    <input asp-for="@Model.Country" class="form-control" />
+                    <span asp-validation-for="@Model.Country" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 p-3">
+                    <label asp-for="@Model.StreetAdress"></label>
+                </div>
+                <div class="col-8 p-3">
+                    <input asp-for="@Model.StreetAdress" class="form-control" />
+                    <span asp-validation-for="@Model.StreetAdress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 p-3">
+                    <label asp-for="@Model.PhoneNumber"></label>
+                </div>
+                <div class="col-8 p-3">
+                    <input asp-for="@Model.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4 p-3">
+                    <label asp-for="@Model.CompanyDiscount"></label>
+                </div>
+                <div class="col-8 p-3">
+                    <input asp-for="@Model.CompanyDiscount" class="form-control" type="number" />
+                    <span asp-validation-for="@Model.CompanyDiscount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Id != 0)
+                    {
+                        <partial name="_EditAndBackToListButton" model="Model.Id" />
+
+                    }
+                    else
+                    {
+                        <partial name="_CreateAndBackToListButton" />
+                    }
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</form>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+   
+}
+
+
+
+
+

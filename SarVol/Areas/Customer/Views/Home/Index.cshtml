@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SarVol.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="row pb-3 backgroundWhite">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12  p-1" style="border:1px solid #008cba; border-radius: 5px;">
+                    <div class="card" style="border:0px;">
+
+                        <img src="@product.ImageUrl" style="width:100%" class="card-img-top  rounded" />
+                        <div class="pl-1" style="text-align:center; ">
+                            <p class="card-title h5" ><b style="color:#2c3e50;font-size:1.4rem;">@product.ProductName</b></p>
+                            <p class="card-title text-primary" style="font-size: 1.2rem;">Waga: <b>@product.Weight g</b></p>
+                        </div>
+                        <div style="margin-top:20px">
+
+                        </div>
+
+                        @if (product.PromotionalPrice != null)
+                        {
+                            <div style="padding-left:5px;" class="">
+                                <p>Regular price:<strike><b class="">@product.RegularPrice $</b></strike></p>
+                            </div>
+
+                            <div style="padding-left:5px;">
+                                <p>Promotional price: <b class="">@product.PromotionalPrice $</b></p>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div style="padding-left:5px; text-align:center" class="">
+                                <p>Regular price:<b class="">@product.RegularPrice $</b></p>
+                            </div>
+
+                        }
+
+                    </div>
+                    <div>
+                        <a asp-action="Details"  class="btn btn-primary form-control" asp-route-id="@product.Id">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+</div>

@@ -1,0 +1,81 @@
+﻿@model SarVol.Models.ShoppingCart
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <input hidden asp-for="ProductId" />
+    <div class="container ">
+        <div class="card">
+            <div class=" row container" style="margin-top:20px">
+                <div class="col-8 col-md-8">
+                    <h1 class="text-primary">@Model.Product.ProductName</h1>
+                    <p class="text-warning">Wage: @Model.Product.Weight g</p>
+                    <h2 class="" style="height:30px; font-size:20px; ">Manufacturer: @Model.Product.Manufacturer.Name</h2>
+                    <h2 class="" style="height:30px; font-size:20px; ">Category: @Model.Product.Category.Name</h2>
+                </div>
+                <div class="col-4 col-lg-4  text-center" >
+                    <img src="@Model.Product.ImageUrl" width="100%" class="rounded" />
+                </div>
+
+
+            </div>
+            
+            <div class="card-body">
+                <div class="container rounded p-2">
+                    <div class="row">
+                        <div class="col-12 col-lg-12" >
+
+
+                            <div class="row pl-2">
+                                <h5 class="text-muted pb-2">Regular price : <strike>@Model.Product.RegularPrice $</strike></h5>
+                            </div>
+
+                            @if (Model.Product.PromotionalPrice != null)
+                            {
+                                <div class="row pl-2">
+                                    <h5 class="text-muted pb-2">Promotional price : @Model.Product.PromotionalPrice $</h5>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row pl-2">
+                                    <h5 class="text-muted pb-2">Regular price : @Model.Product.RegularPrice $</h5>
+                                </div>
+                            }
+
+
+
+                            <div class="row pl-2">
+                                <p >Description: @Html.Raw(Model.Product.Description)</p>
+                            </div>
+                            <div class="row pl-2">
+                                <p >Taste : @Html.Raw(Model.Product.Taste.Name)</p>
+                            </div>
+
+                            <div class="row pl-2">
+                                <div class="col-2 text-primary"><h4>Count:</h4></div>
+                                <div class="col-4"><input class="form-control" asp-for="Count" /></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-12 col-md-6 pb-1">
+                        <a asp-action="Index" class="btn btn-secondary btn-square btn-lg form-control" style="height:50px; background-color:green">Back</a>
+                    </div>
+                    <div class="col-12 col-md-6 pb-1">
+
+                        <button type="submit" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Add to card</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
